@@ -8,7 +8,7 @@
 import Chart from './BaseChart.vue'
 import { array, oneOf } from 'vue-types'
 
-type ChartItem = { name: string; value: number }
+type ChartItem = { xAxis: string; value: number }
 
 const props = defineProps({
   data: array<ChartItem>().def([]),
@@ -18,9 +18,17 @@ const props = defineProps({
 const options = ref({})
 
 const render = (data: ChartItem[]) => {
-  const xAxisData = data.map(el => el.name)
+  const xAxisData = data.map(el => el.xAxis)
   const valueData = data.map(el => el.value)
   options.value = {
+    grid: {
+      width: '100%',
+      left: '0%',
+      right: '0%',
+      top: '16',
+      bottom: '16',
+      containLabel: true
+    },
     legend: {
       show: false
     },
@@ -70,8 +78,8 @@ const valueFormatter = (value: number) => {
 }
 
 const tooltipFormatter = (params: ChartItem[]) => {
-  const { name, value } = params[0]
-  return `<div>${name}&nbsp;&nbsp;&nbsp;&nbsp;${valueFormatter(value)}</div>`
+  const { xAxis, value } = params[0]
+  return `<div>${xAxis}&nbsp;&nbsp;&nbsp;&nbsp;${valueFormatter(value)}</div>`
 }
 
 watch(
@@ -85,14 +93,14 @@ watch(
 
 <style scoped>
 .wrapper {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
 }
 
 .wrapper .chart {
-  width: 50%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
 }
 </style>

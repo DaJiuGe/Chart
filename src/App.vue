@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BarChart from './components/BarChart.vue'
 import LineChart from './components/LineChart.vue'
+import Dashboard from './views/dashboard/index.vue'
 
 const barData = [
   { name: 'A', value: 1 },
@@ -50,7 +51,8 @@ const ratioData = [
     tooltip-header="2022.06.24 - 2022.06.25"
     tooltip-sub-header="评分新增数"
   /> -->
-  <LineChart :data="ratioData" value-type="money" />
+  <!-- <LineChart :data="ratioData" value-type="money" /> -->
+  <Dashboard />
 </template>
 
 <style>
