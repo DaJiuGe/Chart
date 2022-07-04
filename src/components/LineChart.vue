@@ -61,7 +61,7 @@ const render = (data: ChartItem[]) => {
   }
 }
 
-const transformRatio = (value: number) => `${value.toFixed(2) * 100}%`
+const transformRatio = (value: number) => `${(value * 100).toFixed(2)}%`
 const transformNumber = (value: number) => value.toLocaleString()
 const transformMoney = (value: number) => `$${transformNumber(value)}`
 const valueFormatter = (value: number) => {

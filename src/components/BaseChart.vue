@@ -32,6 +32,15 @@ onMounted(() => {
   chart.value = echarts.init(container.value)
   unwrap(chart.value).setOption(options.value)
 })
+
+defineExpose({
+  showLoading: () => {
+    chart.value.showLoading()
+  },
+  hideLoading: () => {
+    chart.value.hideLoading()
+  }
+})
 </script>
 
 <style scoped>
